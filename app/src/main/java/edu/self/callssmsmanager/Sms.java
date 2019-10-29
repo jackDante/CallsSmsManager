@@ -21,10 +21,10 @@ public class Sms extends AppCompatActivity {
         EditText phonenumber = findViewById(R.id.number);
         EditText message = findViewById(R.id.message);
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        String uri = "tel:" + phonenumber.getText().toString();
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        String uri = "smsto: " + phonenumber.getText().toString();
         intent.setData(Uri.parse(uri));
-        intent.putExtra("sms_body", message.toString());
+        intent.putExtra("sms_body", message.getText().toString());
         try {
             startActivity(intent);
         }catch(SecurityException e){
@@ -37,3 +37,4 @@ public class Sms extends AppCompatActivity {
     }
 
 }
+
